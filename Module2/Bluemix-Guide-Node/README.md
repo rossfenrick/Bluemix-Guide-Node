@@ -1,12 +1,12 @@
 # bluemix-todo-apps - node overview
 
-TodoMVC using Backbone, CouchDB/MongoDB and a node back-end, running on Bluemix.
+TodoMVC using Backbone, CouchDB and a node back-end, running on Bluemix.
 
 Refer to the README.md file in the parent directory
 (eg, `bluemix-todo-apps/README.md`) for general instructions regarding
 this application and the database service it requires.
 
-This application supports both Mongo DB and Couch DB ([Cloudant][cloudant_url]) as a backend.
+This application supports Couch DB ([Cloudant][cloudant_url]) as a backend.
 
 ## How it Works
 

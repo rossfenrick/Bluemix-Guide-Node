@@ -37,6 +37,10 @@
         {
             "name": "Jake Peyser",
             "email": "jepeyser@us.ibm.com"
+        },
+        {
+            "name": "Twana Daniel",
+            "email": "twanaazi@ie.ibm.com"
         }
     ],
     "license": "Apache License"
