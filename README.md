@@ -147,6 +147,10 @@ The response should be a JSON representation of the updated ToDo.
 DELETE Response
 The response should be a 204.
 
+US API endpoint: https://api.ng.bluemix.net
+
+UK API endpoint: https://api.eu.bluemix.net
+
 
 ### Mongo
 
