@@ -13,18 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#LogLevel alert rewrite:trace6
-
-RewriteEngine on
-
-RewriteCond %{REQUEST_FILENAME} ^/?(api.*)$
-RewriteRule ^/?(.*)$ /index.php [PT]
-
-RewriteCond %{REQUEST_FILENAME} !^/?(api.*)$
-RewriteCond %{REQUEST_FILENAME} !^/?(public.*)$
-RewriteRule ^/?(.*)$ /public/$1 [PT]
-
-RewriteCond %{REQUEST_FILENAME} ^/
-RewriteRule ^/?(.*)$ /public/index.html [PT]
-
-ProxyPassMatch ^/?(.*php.*)$ fcgi://#{PHP_FPM_LISTEN}${HOME}/htdocs/$1
+applications:
+- path: .
+  memory: 256M
+  instances: 1
+  domain: mybluemix.net
+  name: bluemix-guide-app-demo-01
+  host: bluemix-guide-app-demo-01
+  disk_quota: 1024M
