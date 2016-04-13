@@ -1,7 +1,7 @@
 {
-    "name":                 "bluemix-todo-apps-node",
-    "main":                 "./lib/server",
-    "description":          "node server for TodoMVC using CouchDB or Mongo for storage",
+    "name":                 "bluemix-guide-part-01",
+    "main":                 "./lib/serverPart01",
+    "description":          "Guide App Part 2 ",
     "version":              "0.1.1",
     "private":              false,
     "engines": {
@@ -9,7 +9,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/IBM-Bluemix/todo-apps.git"
+        "url": ""
     },
     "dependencies": {
         "cfenv":           "1.0.x",

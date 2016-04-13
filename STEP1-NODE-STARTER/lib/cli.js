@@ -3,7 +3,7 @@
   var help, nopt, server, utils, _;
 
 
-  // This function only been used for Guide Part 1
+  // This function only been used for one of the Guide
   exports.guidePartOne = function() {
       var express = require('express');
 
@@ -25,7 +25,7 @@
 
 
 
-  // This function only been used for Guide Part 2 and 3
+  // This function only been used for Two of the Guide
   _ = require("underscore");
   nopt = require("nopt");
   utils = require("./utils");

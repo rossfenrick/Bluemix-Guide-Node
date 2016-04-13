@@ -17,7 +17,10 @@ applications:
 - path: .
   memory: 256M
   instances: 1
-  domain: mybluemix.net
-  name: bluemix-guide-app-demo-01
-  host: bluemix-guide-app-demo-01
+  name: bluemix-guide-part-02
+  host: bluemix-guide-part-02
   disk_quota: 1024M
+
+
+
+
