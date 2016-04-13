@@ -11,10 +11,10 @@ require("cf-deployment-tracker-client").track();
 //------------------------------------------------------------------------------
 
 //Guide Part One
-require("./lib/cli").guidePartOne()
+//require("./lib/cli").guidePartOne()
 
 //Guide Part Two
-//require("./lib/cli").main()
+require("./lib/cli").main()
 
 
 

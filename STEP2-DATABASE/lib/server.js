@@ -49,18 +49,17 @@
     var endsInSlash, length, url;
 
     // For Local development, using Cloudant on Bluemix for your Database, we need to the specify database details
-    /*
-       var DatabaseLabel = "";
-       var DatabaseUsername = "";
-       var DatabasePassword = "";
-       DatabaseURL = "";
+      var DatabaseLabel = "cloudantNoSQLDB";
+      var DatabaseUsername = "c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix";
+      var DatabasePassword = "a717610cc8fee566dbf84f9c5b86758a79d995583477231c335dc44475c5ed6f";
+      DatabaseURL = "https://c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix:a717610cc8fee566dbf84f9c5b86758a79d995583477231c335dc44475c5ed6f@c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix.cloudant.com"
+
 
        url = appEnv.getServiceURL(DatabaseName,
        {
        pathname: DatabaseLabel,
        auth: [DatabaseUsername, DatabasePassword]
        });
-    */
 
 
      // When pushing code to Bluemix - best practice not to hard coding any database details
