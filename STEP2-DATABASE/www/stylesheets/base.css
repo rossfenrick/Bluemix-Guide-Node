@@ -181,7 +181,7 @@ label[for='toggle-all'] {
 
 #todo-list li {
 	position: relative;
-	font-size: 24px;
+	font-size: 14px;
 	border-bottom: 1px dotted #ccc;
 }
 
@@ -239,7 +239,6 @@ label[for='toggle-all'] {
 }
 
 #todo-list li label {
-	white-space: pre;
 	word-break: break-word;
 	padding: 15px 60px 15px 15px;
 	margin-left: 45px;

@@ -24,7 +24,7 @@ body {
 	line-height: 1.4em;
 	background: #FFF7F5;
 	color: #4d4d4d;
-	width: 550px;
+	width: 800px;
 	margin: 0 auto;
 	-webkit-font-smoothing: antialiased;
 	-moz-font-smoothing: antialiased;
@@ -549,6 +549,41 @@ hr {
 	border: 0;
 	text-align: center;
 }
+
+.todoList-ul li{
+	list-style-type: none;
+}
+
+#todo-list li h3{
+	padding: 0px 0px 2px 1px;
+	margin-left: 45px;
+	display: block;
+	border-bottom: 1px solid #F5D6D6;
+	font-weight: 200;
+}
+
+#todo-list li p{
+	padding: 0px 0px 1px 15px;
+	margin-left: 45px;
+	display: block;
+	color: darkgrey;
+}
+
+#todo-list li a{
+	color: darkgrey;
+}
+
+
+.todo-listWatson{
+	margin-left: 36px;
+}
+
+.todo-listWatson li{
+
+	border-bottom: none;
+
+}
+
 
 @media (min-width: 899px) {
 	.learn-bar {
