@@ -146,6 +146,7 @@ Server = (function()
     // Adding Text to Speech
     // For local development, Add your watson Speech to Text username and password
     var textToSpeech = watson.text_to_speech({
+      //Will be removing the Username and Password shortly and will replace it with VCAP ref. I left them there to save you time for if running this locally.
       version: 'v1',
       username: '045bc94e-6497-4b29-abdc-05d9ec6441f8',
       password: 'uzl7VK3tteF8'

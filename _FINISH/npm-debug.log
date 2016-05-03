@@ -14,7 +14,7 @@
 12010 verbose addNamed "2.0.4" is a plain semver version for pinkie
 12011 silly gunzTarPerm extractEntry test/bool.js
 12012 silly gunzTarPerm extractEntry test/test.js
-12013 silly gentlyRm /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH/node_modules/watson-developer-cloud/node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/core-util-is is being purged from base /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH
+12013 silly gentlyRm /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH/node_modules/watson-developer-cloud/node_modules/request/node_modules/sbl/node_modules/readable-stream/node_modules/core-util-is is being purged from base /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH
 12014 verbose gentlyRm don't care about contents; nuking /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH/node_modules/watson-developer-cloud/node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/core-util-is
 12015 silly gentlyRm /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH/node_modules/watson-developer-cloud/node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/util-deprecate is being purged from base /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH
 12016 verbose gentlyRm don't care about contents; nuking /Users/Twana/Documents/IBM Docs/Development/Workspace/GitHub/Bluemix-Guide-Node/_FINISH/node_modules/watson-developer-cloud/node_modules/request/node_modules/bl/node_modules/readable-stream/node_modules/util-deprecate

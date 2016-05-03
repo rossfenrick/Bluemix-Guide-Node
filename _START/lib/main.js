@@ -148,8 +148,8 @@ Server = (function()
 
      var textToSpeech = watson.text_to_speech({
      version: 'v1',
-     username: '045bc94e-6497-4b29-abdc-05d9ec6441f8',
-     password: 'uzl7VK3tteF8'
+     username: 'Watson-Service-Username',
+     password: '<Watson-Service-Password>'
      });
 
      app.get('/api/synthesize', function(req, res, next) {
