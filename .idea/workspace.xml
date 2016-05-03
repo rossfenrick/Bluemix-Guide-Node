@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="488cec1e-f9a0-4df3-897e-82251cb858a8" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/.cfignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/lib/couch-db.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/lib/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/lib/tx.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/manifest.yml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/server.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/images/bluemix-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/images/newapp-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/images/user.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/javascripts/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/javascripts/main.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/base.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/collections/todos.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/models/todo.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/routers/router.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/views/TestAndDev.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/views/app-view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/js/views/todo-view.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/stylesheets/base.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/_Dev/views/stylesheets/style.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/NOTICE" afterPath="$PROJECT_DIR$/NOTICE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_FINISH/README.md" afterPath="$PROJECT_DIR$/_FINISH/README.md" />
     </list>
     <ignored path="Bluemix-Guide-Node.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +29,8 @@
         <entry file="file://$PROJECT_DIR$/_FINISH/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="0">
-                <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="23" />
+              <first_editor relative-caret-position="30">
+                <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -68,7 +43,7 @@
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="105">
-                <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+                <caret line="7" column="27" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -80,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/../backup_GUIDE/_Dev/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="1575">
+              <first_editor relative-caret-position="697">
                 <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
                 <folding />
               </first_editor>
@@ -104,7 +79,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/_Dev_Partice/views/js/collections/users.js" />
         <option value="$PROJECT_DIR$/_Dev_Partice/views/js/app.js" />
         <option value="$PROJECT_DIR$/_Dev_Partice/views/js/views/user-view.js" />
         <option value="$PROJECT_DIR$/_Dev_Partice/views/index.ejs" />
@@ -152,9 +126,10 @@
         <option value="$PROJECT_DIR$/_START/server.js" />
         <option value="$PROJECT_DIR$/_START/lib/main.js" />
         <option value="$PROJECT_DIR$/_FINISH/package.json" />
-        <option value="$PROJECT_DIR$/_FINISH/README.md" />
         <option value="$PROJECT_DIR$/../backup_GUIDE/_Dev/README.md" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/NOTICE" />
+        <option value="$PROJECT_DIR$/_FINISH/README.md" />
       </list>
     </option>
   </component>
@@ -212,20 +187,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Bluemix-Guide-Node" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluemix-Guide-Node" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Bluemix-Guide-Node" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_FINISH" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,12 +302,12 @@
       <workItem from="1462288316996" duration="1767000" />
       <workItem from="1462290389362" duration="1881000" />
       <workItem from="1462292314978" duration="1697000" />
-      <workItem from="1462294174936" duration="16000" />
+      <workItem from="1462294174936" duration="199000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="46030000" />
+    <option name="totallyTimeSpent" value="46213000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -425,8 +386,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_Dev_Partice/README.md" />
-    <entry file="file://$PROJECT_DIR$/_Dev_Partice/manifest.yml" />
     <entry file="file://$PROJECT_DIR$/_Dev_Partice/lib/main.js" />
     <entry file="file://$PROJECT_DIR$/_Dev_Partice/server.js" />
     <entry file="file://$USER_HOME$/Downloads/Bluemix-Guide/manifest.yml">
@@ -513,16 +472,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/text-to-speech-nodejs-master 2/app.js" />
-    <entry file="file://$PROJECT_DIR$/_START/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="30">
-            <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Downloads/Bluemix-Guide-NodeJS/manifest.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -677,22 +626,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../backup_GUIDE/_Dev/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="1575">
-            <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
-            <folding />
-          </first_editor>
-          <second_editor />
+    <entry file="file://$PROJECT_DIR$/NOTICE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_FINISH/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="0">
-            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="7" selection-end-column="23" />
+          <first_editor relative-caret-position="30">
+            <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_START/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="30">
+            <caret line="2" column="12" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../backup_GUIDE/_Dev/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="697">
+            <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
@@ -703,7 +679,7 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="105">
-            <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <caret line="7" column="27" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
             <folding />
           </first_editor>
           <second_editor />
