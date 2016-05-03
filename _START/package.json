@@ -1,9 +1,9 @@
 {
-    "name":                 "bluemix-guide-app-demo-01",
-    "main":                 "server.js",
-    "description":          "Guide App Part 2 ",
-    "version":              "0.1.1",
-    "private":              false,
+    "name": "bluemix-guide",
+    "main": "server.js",
+    "description": "Guide App",
+    "version": "0.1.1",
+    "private": false,
     "engines": {
         "node": "0.12.*"
     },
@@ -15,16 +15,15 @@
         "url": ""
     },
     "dependencies": {
-        "cfenv":           "1.0.x",
-        "express":          "3.4.x",
-        "nano":             "4.7.x",
-        "ports":            "1.1.x",
-        "q":                "1.0.x",
-        "underscore":       "1.6.x"
+        "cfenv": "1.0.x",
+        "express": "3.4.x",
+        "nano": "4.7.x",
+        "ports": "1.1.x",
+        "q": "1.0.x",
+        "underscore": "1.6.x",
+        "watson-developer-cloud": "^1.4.1"
     },
-    "devDependencies": {
-
-    },
+    "devDependencies": {},
     "author": "",
     "contributors": [
         {

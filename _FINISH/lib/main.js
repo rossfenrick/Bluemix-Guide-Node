@@ -8,11 +8,9 @@ couchDB = require("./couch-db");
 tx = require("./tx");
 todoDB = null;
 port = process.env.VCAP_APP_PORT || 8080;
+DatabaseURL = "";
 DatabaseName = "todo-couch-db";
 localDB = "http://127.0.0.1:5984";
-DatabaseURL = "";
-
-
 var watson = require('watson-developer-cloud');
 
 
@@ -145,7 +143,6 @@ Server = (function()
 
 
 
-
     // Adding Text to Speech
     // For local development, Add your watson Speech to Text username and password
     var textToSpeech = watson.text_to_speech({
@@ -167,7 +164,6 @@ Server = (function()
       transcript.pipe(res);
     });
     //Finish Here Watson
-
 
 
 

@@ -1,7 +1,7 @@
 {
-  "name": "bluemix-guide",
+  "name": "bluemix-guide-app-demo-01",
   "main": "server.js",
-  "description": "Guide App",
+  "description": "Guide App Part 2 ",
   "version": "0.1.1",
   "private": false,
   "engines": {
@@ -20,6 +20,7 @@
     "nano": "4.7.x",
     "ports": "1.1.x",
     "q": "1.0.x",
+    "ejs": "2.4.1",
     "underscore": "1.6.x",
     "watson-developer-cloud": "^1.4.1"
   },

@@ -43,6 +43,7 @@ getCloudant = function()
 {
   var endsInSlash, length, url;
 
+
   //START- For when running the app locally, using Cloudant on Bluemix for your Database, while app is running locally.
   var DatabaseLabel = "cloudantNoSQLDB";
   var DatabaseUsername = "";
@@ -58,7 +59,7 @@ getCloudant = function()
 
 
   // START - For when pushing the code to Bluemix - Note here we are not hard coding any database credentials. This is best practice for when pushing apps to Bluemix
-  /*
+   /*
    url = appEnv.getServiceURL(DatabaseName,
    {
    pathname: "database",
