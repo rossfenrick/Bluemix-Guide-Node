@@ -1,1 +1,0 @@
-# bluemix-Guide Part 2
