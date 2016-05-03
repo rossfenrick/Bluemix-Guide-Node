@@ -1,0 +1,188 @@
+var port, Q, Server, appEnv, cfEnv, couchDB, express, getCloudant, http, ports, todoDB, tx, DatabaseURL, DatabaseName;
+http = require("http");
+Q = require("q");
+ports = require("ports");
+express = require("express");
+cfEnv = require("cfenv");
+couchDB = require("./couch-db");
+tx = require("./tx");
+todoDB = null;
+port = process.env.VCAP_APP_PORT || 8080;
+DatabaseName = "todo-couch-db";
+localDB = "http://127.0.0.1:5984";
+DatabaseURL = "";
+
+
+var watson = require('watson-developer-cloud');
+
+
+appEnv = cfEnv.getAppEnv({
+
+});
+
+process.on("exit", function(status) {
+  return log("process exiting with Error status  " + status);
+});
+
+exports.start = function(options) {
+  var couchURL;
+  if (options.db === "cloudant") {
+    couchURL = getCloudant();
+    return couchDB.init(couchURL).fail(function(err) {
+
+      return logError(err);
+    }).then(function(todoDB_) {
+      var server;
+      todoDB = todoDB_;
+      server = new Server(options);
+      return server.start();
+    }).done();
+  }
+};
+
+getCloudant = function()
+{
+  var endsInSlash;
+  var length;
+  var url;
+
+
+  //START- For when running the app locally, using Cloudant on Bluemix for your Database, while app is running locally.
+  /*
+  var DatabaseLabel = "cloudantNoSQLDB";
+  var DatabaseUsername = "c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix";
+  var DatabasePassword = "a717610cc8fee566dbf84f9c5b86758a79d995583477231c335dc44475c5ed6f";
+  DatabaseURL = "https://c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix:a717610cc8fee566dbf84f9c5b86758a79d995583477231c335dc44475c5ed6f@c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix.cloudant.com";
+
+  url = appEnv.getServiceURL(DatabaseName,
+   {
+   pathname: DatabaseLabel,
+   auth: [DatabaseUsername, DatabasePassword]
+   });
+   */
+   // FINISH
+
+
+
+  // START - For when pushing the code to Bluemix - Note here we are not hard coding any database credentials. This is best practice for when pushing apps to Bluemix
+  url = appEnv.getServiceURL(DatabaseName,
+      {
+        pathname: "database",
+        auth: ["username", "password"]
+      });
+  // FINISH
+
+
+  url = url || DatabaseURL;
+  //url = url || localDB;
+  length = url.length - 1;
+  endsInSlash = url.indexOf('/', length);
+  if (endsInSlash === -1) {
+    url = url + '/';
+  }
+  url = url + 'bluemix-todo';
+  return url;
+};
+
+
+
+Server = (function()
+{
+  function Server(options) {
+    if (options == null) {
+      options = {};
+    }
+    if (options.port == null) {
+      options.port = appEnv.port;
+    }
+    if (options.verbose == null) {
+      options.verbose = false;
+    }
+    this.port = options.port, this.verbose = options.verbose;
+  }
+
+  Server.prototype.start = function() {
+    var app, deferred;
+    deferred = Q.defer();
+    app = express();
+    app.use(express["static"]("views"));
+    app.use(express.json());
+
+
+    app.use(function(req, res, next) {
+      req.tx = tx.tx(req, res, todoDB);
+      return next();
+    });
+    app.get("/api/todos", (function(_this) {
+      return function(req, res) {
+        return req.tx.search();
+      };
+    })(this));
+    app.post("/api/todos", (function(_this) {
+      return function(req, res) {
+        return req.tx.create();
+      };
+    })(this));
+    app.get("/api/todos/:id", (function(_this) {
+      return function(req, res) {
+        return req.tx.read();
+      };
+    })(this));
+    app.put("/api/todos/:id", (function(_this) {
+      return function(req, res) {
+        return req.tx.update();
+      };
+    })(this));
+    app["delete"]("/api/todos/:id", (function(_this) {
+      return function(req, res) {
+        return req.tx["delete"]();
+      };
+    })(this));
+
+
+
+
+
+
+
+
+    // Adding Text to Speech
+    // For local development, Add your watson Speech to Text username and password
+    var textToSpeech = watson.text_to_speech({
+      version: 'v1',
+      username: '045bc94e-6497-4b29-abdc-05d9ec6441f8',
+      password: 'uzl7VK3tteF8'
+    });
+
+    app.get('/api/synthesize', function(req, res, next) {
+      var transcript = textToSpeech.synthesize(req.query);
+      transcript.on('response', function(response) {
+        if (req.query.download) {
+          response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
+        }
+      });
+      transcript.on('error', function(error) {
+        next(error);
+      });
+      transcript.pipe(res);
+    });
+    //Finish Here Watson
+
+
+
+
+    app.listen(port, appEnv.bind, (function(_this) {
+      return function() {
+
+        // print a message when the server starts listening
+        console.log("To view your app, open this link in your browser: http://localhost:" + port);
+        return deferred.resolve(_this);
+      };
+    })(this));
+
+    return deferred.promise;
+  };
+
+  return Server;
+
+})();

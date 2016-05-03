@@ -1,0 +1,11 @@
+---
+declared-services:
+  text-to-speech-service:
+    label: text_to_speech
+    plan: standard
+applications:
+- services:
+  - Text to Speech-6t
+  name: Bluemix-Guide
+  path: .
+  memory: 768M

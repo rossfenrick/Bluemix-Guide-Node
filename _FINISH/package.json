@@ -1,0 +1,43 @@
+{
+  "name": "Bluemix-Guide-NodeJS",
+  "main": "server.js",
+  "description": "Bluemix Guide",
+  "version": "0.1.1",
+  "private": false,
+  "engines": {
+    "node": "0.12.*"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "cfenv":           "1.0.x",
+    "express":          "3.4.x",
+    "nano":             "4.7.x",
+    "ports":            "1.1.x",
+    "q":                "1.0.x",
+    "underscore":       "1.6.x",
+    "watson-developer-cloud": "^1.4.1",
+    "body-parser": "~1.14.1",
+    "express-rate-limit": "^2.0.2",
+    "express-secure-only": "^0.2.1",
+    "helmet": "^2.0.0"
+  },
+  "devDependencies": {},
+  "author": "",
+  "contributors": [
+    {
+      "name": "Jake Peyser",
+      "email": "jepeyser@us.ibm.com"
+    },
+    {
+      "name": "Twana Daniel",
+      "email": "twanaazi@ie.ibm.com"
+    }
+  ],
+  "license": "Apache License"
+}
