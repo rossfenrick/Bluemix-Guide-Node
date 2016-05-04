@@ -244,7 +244,6 @@ Whether or not you’ve deployed the app, you’ll have to update the manifest.y
 3. Change the `"Name"` and `"Host"` in the `manifest.yml` file with the Name and Host that you gave to your node application.
 
 
-
 ##Getting Started with adding Watson Text To Speech!
 
 1. Modify the index.html
