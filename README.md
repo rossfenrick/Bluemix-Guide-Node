@@ -219,31 +219,37 @@ To access Cloudant database dashboard, open the the Bluemix dashboard, open your
 
 Here we are going to look at how to make an API to call to a Watson service on Bluemix.
 We are going to use a Watson Text To Speech service to convert the text to speech, the converted audio can download or just played back on the browser.
+
 Once you understand the process of making an API call, you then should be able to use the same skills to use other Watson services.
 
+###If you haven’t done the Deploying a Node app to Bluemix Guide, follow these steps before starting:
+1. Clone the sample app:
+  ```
+    $ git clone https://github.com/Twanawebtech/Bluemix-Guide-Node
+    $ cd _START
+  ```
 
-If you haven’t done the Deploying a Node app to Bluemix Guide, follow these steps before starting:
-Clone the sample app:
-$ git clone https://github.com/Twanawebtech/Bluemix-Guide-Node
-Create an empty application on Bluemix - Required
+2. Create an empty application on Bluemix - Required
+
 You need to create an empty application on Bluemix to allow us to later on push the To-Do app to Bluemix.
 Quickest way to create an application on Bluemix is using the Bluemix user interface.
 
 Open Bluemix in your browser and login with your Bluemix email and password.
 Once you login successfully, go the Dashboard and click on the “Create App” button, then select the “Web” option and then for the runtime options select the “SDK for Node.js” and finally give your app a unique name then hit the create button.
-(Keep a note of your application “Name” and “Host” as you be needing this in next step)
+
+(Keep a note of your application `“Name”` and `“Host”` as you be needing this in next step)
 
 Whether or not you’ve deployed the app, you’ll have to update the manifest.yml file with your application "Name" and "Host".
-$ cd _START
 
-Change the Name and Host in the manifest.yml file file with the Name and Host that you gave to your node application.
+3. Change the `"Name"` and `"Host"` in the `manifest.yml` file with the Name and Host that you gave to your node application.
 
 
-Now lets get started!
 
+##Getting Started with adding Watson Text To Speech!
 
 1. Modify the index.html
-   Uncomment the code from line 12 to 46 by removing the "<!--  and -->". Here we are just added a simple text area to some text and a two buttons to download converted audio
+   Uncomment the code from line **12** to **46** by removing the opening and closing comments tags
+   This code is adding a simple text area to some text and a two buttons to download converted audio.
   ```
     <!--
        <section class="aboutUser">
@@ -282,13 +288,9 @@ Now lets get started!
     -->
  ```
 
-
-1. Modify the index.html
-
 2. Connect to Bluemix in the command line tool.
-  ```sh
-  $ cf api https://api.ng.bluemix.net
-  $ cf login -u <your user ID>
+  ```
+  $ cf login <your bluemix email and password>
   ```
 3. Create a Watson Text To Speech Service
 ```
@@ -300,11 +302,10 @@ $ cf bind-service <Your-Application-Name> text-to-speech-service
 $ cf restage <Your-Application-Name>
 ```
 
-
 5. Modify the code to use the Text To Speech service
 
 Open the server.js file and uncomment the below that is from line 11 to 32.
-  ```sh
+  ```
     /*
         var watson = require('watson-developer-cloud');
         var textToSpeech = watson.text_to_speech({
@@ -331,7 +332,7 @@ Open the server.js file and uncomment the below that is from line 11 to 32.
  **Note:** there is a demo.js under the `views/js/watson/JS` in which handles the events for when clicking on Download or the speak button
 
 6. Push it live to Bluemix!
-  ```sh
+  ```
   $ cf push
   ```
 
