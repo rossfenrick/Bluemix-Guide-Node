@@ -8,6 +8,31 @@
     var envOptions = {};
     app.use(express.static(__dirname + '/views'));
 
+    // Adding Text to Speech Service - For local development, Add your watson Speech to Text username and password. You can get your Watson username and password from Bluemix Dashboard or run the this command $cf env <Application-Name>
+    /*
+    // will be adding VACP here!
+     var watson = require('watson-developer-cloud');
+     var textToSpeech = watson.text_to_speech({
+     version: 'v1',
+     username: '',
+     password: ''
+     });
+
+     app.get('/api/synthesize', function(req, res, next) {
+     var transcript = textToSpeech.synthesize(req.query);
+     transcript.on('response', function(response) {
+     if (req.query.download) {
+     response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
+     }
+     });
+     transcript.on('error', function(error) {
+     next(error);
+     });
+     transcript.pipe(res);
+     });
+     */
+
+
     // Guide Part 1 - loading the To-Do without Cloudant.
     /*
     app.listen(port, function() {

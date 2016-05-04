@@ -217,6 +217,219 @@ To access Cloudant database dashboard, open the the Bluemix dashboard, open your
 
 # Adding a Watson service to your app
 
+Here we are going to look at how to make an API to call to a Watson service on Bluemix.
+We are going to use a Watson Text To Speech service to convert the text to speech, the converted audio can download or just played back on the browser.
+Once you understand the process of making an API call, you then should be able to use the same skills to use other Watson services.
 
-adding more info now...
+
+If you haven’t done the Deploying a Node app to Bluemix Guide, follow these steps before starting:
+Clone the sample app:
+$ git clone https://github.com/Twanawebtech/Bluemix-Guide-Node
+Create an empty application on Bluemix - Required
+You need to create an empty application on Bluemix to allow us to later on push the To-Do app to Bluemix.
+Quickest way to create an application on Bluemix is using the Bluemix user interface.
+
+Open Bluemix in your browser and login with your Bluemix email and password.
+Once you login successfully, go the Dashboard and click on the “Create App” button, then select the “Web” option and then for the runtime options select the “SDK for Node.js” and finally give your app a unique name then hit the create button.
+(Keep a note of your application “Name” and “Host” as you be needing this in next step)
+
+Whether or not you’ve deployed the app, you’ll have to update the manifest.yml file with your application "Name" and "Host".
+$ cd _START
+
+Change the Name and Host in the manifest.yml file file with the Name and Host that you gave to your node application.
+
+
+Now lets get started!
+
+
+1. Modify the index.html
+   Uncomment the code from line 12 to 46 by removing the "<!--  and -->". Here we are just added a simple text area to some text and a two buttons to download converted audio
+  ```
+    <!--
+       <section class="aboutUser">
+           <a><img class="userImage" src="images/user.png" alt="user"></a>
+               <table class="table-respond">
+                   <thead>
+                       <tr>
+                           <th><h2>You & Watson<br>Convert Text to Speech!</h2></th>
+                       </tr>
+                       <tr>
+                           <td>
+                               <div role="tabpanel" class="tab-pane active" id="home">
+                                   <textarea id="textArea" spellcheck="false" class="input--form--textarea">Enter something about you!</textarea>
+                               </div>
+                           </td>
+                           <td>
+                               <button type=button class="download-button btn btn-block">
+                                   Download Text
+                               </button>
+
+                               <button type=button class="speak-button btn btn-secondary">
+                                   Speak&emsp; <span>(Only in Chrome & Firefox)</span>
+                               </button>
+                           </td>
+                           <td>
+                               <div class="audioParent">
+                                   <audio class="audio">
+                                       Your browser does not support the audio element.
+                                   </audio>
+                               </div>
+                           </td>
+                       </tr>
+                   </thead>
+               </table>
+       </section>
+    -->
+ ```
+
+
+1. Modify the index.html
+
+2. Connect to Bluemix in the command line tool.
+  ```sh
+  $ cf api https://api.ng.bluemix.net
+  $ cf login -u <your user ID>
+  ```
+3. Create a Watson Text To Speech Service
+```
+$ cf create-service text_to_speech standard text-to-speech-service
+```
+4. Now let’s bind the watson to our app to better organise our services and this will display the service under your application when viewing on Bluemix dashboard (Note: you can use the same service on multiple applications)
+```
+$ cf bind-service <Your-Application-Name> text-to-speech-service
+$ cf restage <Your-Application-Name>
+```
+
+
+5. Modify the code to use the Text To Speech service
+
+Open the server.js file and uncomment the below that is from line 11 to 32.
+  ```sh
+    /*
+        var watson = require('watson-developer-cloud');
+        var textToSpeech = watson.text_to_speech({
+            version: 'v1',
+            username: '<service-username>',
+            password: '<service-password>'
+        });
+
+        app.get('/api/synthesize', function(req, res, next) {
+            var transcript = textToSpeech.synthesize(req.query);
+            transcript.on('response', function(response) {
+                if (req.query.download) {
+                    response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
+                }
+            });
+            transcript.on('error', function(error) {
+                next(error);
+            });
+            transcript.pipe(res);
+        });
+   */
+  ```
+
+ **Note:** there is a demo.js under the `views/js/watson/JS` in which handles the events for when clicking on Download or the speak button
+
+6. Push it live to Bluemix!
+  ```sh
+  $ cf push
+  ```
+
+
+## Running locally
+  To run the app locally is super simple at this stage.
+
+1. Copy the username and password from your `text-to-speech-service` service in Bluemix to `server.js`, you can see the credentials using:
+
+    ```sh
+    $ cf env <application-name>
+    ```
+    Example output:
+    ```sh
+    System-Provided:
+    {
+    "VCAP_SERVICES": {
+      "text_to_speech": [{
+          "credentials": {
+            "url": "<url>",
+            "password": "<password>",
+            "username": "<username>"
+          },
+        "label": "text_to_speech",
+        "name": "text-to-speech-service",
+        "plan": "free"
+     }]
+    }
+    }
+    ```
+
+    You need to copy `username` and `password`.
+
+2. Go to the project folder in a terminal and run:
+    ```
+    npm install
+    ```
+4. Start the application
+    ```
+    node server.js
+    ```
+6. Go to [http://localhost:8080](http://localhost:8080)
+
+
+## Troubleshooting
+
+  Here are some useful commands you can use. You will learn more when working with the Bluemix CLI.
+
+  ```sh
+    $ cf logs < Your-App-Name > --recent
+    (View Recent Deployment logs)
+  ```
+
+  ```sh
+  $ cf login
+  (Login to Bluemix)
+  ```
+  ```sh
+    $ cf apps
+    (View current apps on targeted org/space)
+  ```
+  ```sh
+   $ cf services
+   (View services on targeted org/space)
+  ```
+  ```sh
+   $ cf push < Your-App-Name >
+   (Push your app to Bluemix)
+  ```
+  ```sh
+   $ cf delete < Your-App-Name >
+   (Delete App from Bluemix)
+  ```
+  ```sh
+   $ cf restage < Your-App-Name >
+   (Restage your app, command in which you need to use when binding services)
+  ```
+  ```sh
+  $ cf env < Your-App-Name >
+  (Displays application environment details, if services binned to your app such as a database then you can see your Database details as well using this command)
+  ```
+
+  [Click here to see more commands](https://console.ng.bluemix.net/docs/cli/reference/bluemix_cli/index.html)
+
+
+
+## License
+
+  This sample code is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE).
+
+## Contributing
+
+  See [CONTRIBUTING](CONTRIBUTING.md).
+
+## Open Source @ IBM
+  Find more open source projects on the [IBM Github Page](http://ibm.github.io/)
+
+[service_url]: http://www.ibm.com/smarterplanet/us/en/ibmwatson/developercloud/text-to-speech.html
+[cloud_foundry]: https://github.com/cloudfoundry/cli
+[sign_up]: https://apps.admin.ibmcloud.com/manage/trial/bluemix.html?cm_mmc=WatsonDeveloperCloud-_-LandingSiteGetStarted-_-x-_-CreateAnAccountOnBluemixCLI
 

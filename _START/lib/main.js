@@ -136,41 +136,6 @@ Server = (function()
       };
     })(this));
 
-
-
-
-
-
-
-    /*
-    // Adding Text to Speech
-    // For local development, Add your watson Speech to Text username and password
-
-     var textToSpeech = watson.text_to_speech({
-     version: 'v1',
-     username: 'Watson-Service-Username',
-     password: '<Watson-Service-Password>'
-     });
-
-     app.get('/api/synthesize', function(req, res, next) {
-     var transcript = textToSpeech.synthesize(req.query);
-     transcript.on('response', function(response) {
-     if (req.query.download) {
-     response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
-     }
-     });
-     transcript.on('error', function(error) {
-     next(error);
-     });
-     transcript.pipe(res);
-     });
-
-
-    //Finish Here Watson
-     */
-
-
-
     app.listen(port, appEnv.bind, (function(_this) {
       return function() {
 

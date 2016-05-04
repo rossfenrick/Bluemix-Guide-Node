@@ -11,8 +11,6 @@ port = process.env.VCAP_APP_PORT || 8080;
 DatabaseURL = "";
 DatabaseName = "todo-couch-db";
 localDB = "http://127.0.0.1:5984";
-var watson = require('watson-developer-cloud');
-
 
 appEnv = cfEnv.getAppEnv({
 
@@ -136,37 +134,6 @@ Server = (function()
         return req.tx["delete"]();
       };
     })(this));
-
-
-
-
-
-
-
-    // Adding Text to Speech
-    // For local development, Add your watson Speech to Text username and password
-    var textToSpeech = watson.text_to_speech({
-      //Will be removing the Username and Password shortly and will replace it with VCAP ref. I left them there to save you time for if running this locally.
-      version: 'v1',
-      username: '045bc94e-6497-4b29-abdc-05d9ec6441f8',
-      password: 'uzl7VK3tteF8'
-    });
-
-    app.get('/api/synthesize', function(req, res, next) {
-      var transcript = textToSpeech.synthesize(req.query);
-      transcript.on('response', function(response) {
-        if (req.query.download) {
-          response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
-        }
-      });
-      transcript.on('error', function(error) {
-        next(error);
-      });
-      transcript.pipe(res);
-    });
-    //Finish Here Watson
-
-
 
     app.listen(port, appEnv.bind, (function(_this) {
       return function() {
