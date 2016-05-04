@@ -256,14 +256,14 @@ Whether or not you’ve deployed the app, you’ll have to update the manifest.y
   $ cf login <your bluemix email and password>
   ```
 3. Create a Watson Text To Speech Service
-```
-$ cf create-service text_to_speech standard text-to-speech-service
-```
+   ```
+   $ cf create-service text_to_speech standard text-to-speech-service
+   ```
 4. Now let’s bind the watson to our app to better organise our services and this will display the service under your application when viewing on Bluemix dashboard (Note: you can use the same service on multiple applications)
-```
-$ cf bind-service <Your-Application-Name> text-to-speech-service
-$ cf restage <Your-Application-Name>
-```
+   ```
+   $ cf bind-service <Your-Application-Name> text-to-speech-service
+   $ cf restage <Your-Application-Name>
+   ```
 5. Modify the code to use the Text To Speech service - Open the server.js file and uncomment the below that is from line 11 to 32.
   ```
     /*
