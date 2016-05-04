@@ -222,7 +222,7 @@ We are going to use a Watson Text To Speech service to convert the text to speec
 
 Once you understand the process of making an API call, you then should be able to use the same skills to use other Watson services.
 
-###If you haven’t done the Deploying a Node app to Bluemix Guide, follow these steps before starting:
+####If you haven’t done the Deploying a Node app to Bluemix Guide, follow these steps before starting:
 1. Clone the sample app:
   ```
     $ git clone https://github.com/Twanawebtech/Bluemix-Guide-Node
@@ -250,43 +250,6 @@ Whether or not you’ve deployed the app, you’ll have to update the manifest.y
 1. Modify the index.html
    Uncomment the code from line **12** to **46** by removing the opening and closing comments tags
    This code is adding a simple text area to some text and a two buttons to download converted audio.
-  ```
-    <!--
-       <section class="aboutUser">
-           <a><img class="userImage" src="images/user.png" alt="user"></a>
-               <table class="table-respond">
-                   <thead>
-                       <tr>
-                           <th><h2>You & Watson<br>Convert Text to Speech!</h2></th>
-                       </tr>
-                       <tr>
-                           <td>
-                               <div role="tabpanel" class="tab-pane active" id="home">
-                                   <textarea id="textArea" spellcheck="false" class="input--form--textarea">Enter something about you!</textarea>
-                               </div>
-                           </td>
-                           <td>
-                               <button type=button class="download-button btn btn-block">
-                                   Download Text
-                               </button>
-
-                               <button type=button class="speak-button btn btn-secondary">
-                                   Speak&emsp; <span>(Only in Chrome & Firefox)</span>
-                               </button>
-                           </td>
-                           <td>
-                               <div class="audioParent">
-                                   <audio class="audio">
-                                       Your browser does not support the audio element.
-                                   </audio>
-                               </div>
-                           </td>
-                       </tr>
-                   </thead>
-               </table>
-       </section>
-    -->
- ```
 
 2. Connect to Bluemix in the command line tool.
   ```
@@ -301,10 +264,7 @@ $ cf create-service text_to_speech standard text-to-speech-service
 $ cf bind-service <Your-Application-Name> text-to-speech-service
 $ cf restage <Your-Application-Name>
 ```
-
-5. Modify the code to use the Text To Speech service
-
-Open the server.js file and uncomment the below that is from line 11 to 32.
+5. Modify the code to use the Text To Speech service - Open the server.js file and uncomment the below that is from line 11 to 32.
   ```
     /*
         var watson = require('watson-developer-cloud');
@@ -342,11 +302,11 @@ Open the server.js file and uncomment the below that is from line 11 to 32.
 
 1. Copy the username and password from your `text-to-speech-service` service in Bluemix to `server.js`, you can see the credentials using:
 
-    ```sh
+    ```
     $ cf env <application-name>
     ```
     Example output:
-    ```sh
+    ```
     System-Provided:
     {
     "VCAP_SERVICES": {
@@ -363,18 +323,17 @@ Open the server.js file and uncomment the below that is from line 11 to 32.
     }
     }
     ```
-
     You need to copy `username` and `password`.
 
 2. Go to the project folder in a terminal and run:
     ```
     npm install
     ```
-4. Start the application
+3. Start the application
     ```
     node server.js
     ```
-6. Go to [http://localhost:8080](http://localhost:8080)
+4. Go to [http://localhost:8080](http://localhost:8080)
 
 
 ## Troubleshooting
