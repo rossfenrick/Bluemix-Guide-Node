@@ -6,9 +6,9 @@ There are three parts to this guide:
 
 **[STEP 1 DEPLOY NODE STARTER APP](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/STEP1-NODE-STARTER)**
 
-**[STEP 2 ADD DATABASE TO YOUR APP](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/STEP2-NODE-DATABASE)**
+**[STEP 2 ADD DATABASE TO YOUR APP](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/STEP2-DATABASE)**
 
-**[STEP 3 ADD WATSON TO YOUR APP](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/STEP3-NODE-WATSON)**
+**[STEP 3 ADD WATSON TO YOUR APP](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/STEP3-WATSON)**
 
 
 
