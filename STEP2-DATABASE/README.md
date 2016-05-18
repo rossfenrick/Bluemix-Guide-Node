@@ -131,6 +131,7 @@ To access Cloudant database dashboard, open the the Bluemix dashboard, open your
 
 
 ** Cloudant Part completed, next let's add a Watson service to our To-Do app **
+
 **Next: [Add Watson Service >>](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/STEP3-WATSON)**
 
 
