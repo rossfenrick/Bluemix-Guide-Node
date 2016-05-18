@@ -20,9 +20,6 @@ applications:
   domain: mybluemix.net
   name: Bluemix-Guide-NodeJS
   host: bluemix-guide-nodejs
-services:
-  - Text to Speech-6t
-  - todo-couch-db
 
 
 

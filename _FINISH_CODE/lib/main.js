@@ -8,9 +8,12 @@ couchDB = require("./couch-db");
 tx = require("./tx");
 todoDB = null;
 port = process.env.VCAP_APP_PORT || 8080;
-DatabaseURL = "";
 DatabaseName = "todo-couch-db";
-localDB = "http://127.0.0.1:5984";
+//localDB = "http://127.0.0.1:5984";
+
+
+
+
 
 appEnv = cfEnv.getAppEnv({
 
@@ -38,35 +41,22 @@ exports.start = function(options) {
 
 getCloudant = function()
 {
-  var endsInSlash;
-  var length;
-  var url;
+  var endsInSlash, length, url;
 
-
-  //START- For when running the app locally, using Cloudant on Bluemix for your Database, while app is running locally.
-  /*
-  var DatabaseLabel = "cloudantNoSQLDB";
-  var DatabaseUsername = "c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix";
-  var DatabasePassword = "a717610cc8fee566dbf84f9c5b86758a79d995583477231c335dc44475c5ed6f";
-  DatabaseURL = "https://c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix:a717610cc8fee566dbf84f9c5b86758a79d995583477231c335dc44475c5ed6f@c60761e4-b6bb-4a06-9f13-3f9559915806-bluemix.cloudant.com";
-
-  url = appEnv.getServiceURL(DatabaseName,
-   {
-   pathname: DatabaseLabel,
-   auth: [DatabaseUsername, DatabasePassword]
-   });
-   */
-   // FINISH
+  //< This is only needed for when running the app locally, if app is running then it will take the URL database details and when pushed to Bluemix then it will take VCAP below>
+  DatabaseURL = "< Add your Cloudant database URL >";
 
 
 
-  // START - For when pushing the code to Bluemix - Note here we are not hard coding any database credentials. This is best practice for when pushing apps to Bluemix
-  url = appEnv.getServiceURL(DatabaseName,
-      {
-        pathname: "database",
-        auth: ["username", "password"]
-      });
-  // FINISH
+  // ===== START ===== VCAP - For when pushing the code to Bluemix - Note here we are not hard coding any database credentials. This is best practice for when pushing apps to Bluemix
+     url = appEnv.getServiceURL(DatabaseName,
+     {
+     pathname: "database",
+     auth: ["username", "password"]
+     });
+   // ===== FINISH =====
+
+
 
 
   url = url || DatabaseURL;
@@ -76,10 +66,9 @@ getCloudant = function()
   if (endsInSlash === -1) {
     url = url + '/';
   }
-  url = url + 'bluemix-todo';
+  url = url + 'todo-couch-db';
   return url;
 };
-
 
 
 Server = (function()

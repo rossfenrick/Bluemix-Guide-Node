@@ -46,12 +46,9 @@ Get your credentials:
 $ cf env <Your-Application-Name>
 ```
 
-Copy and paste the Database Label, Username, Password and URL into lib/main.js line 49-50. This is what it should look like.
+Copy and paste the your cloudant database URL into lib/main.js line 47. This is what it should look like.
 ```
-//START- For when running the app locally, using Cloudant on Bluemix for your Database, while app is running locally.
-var DatabaseLabel = "cloudantNoSQLDB";
-var DatabaseUsername = "<Your-Database-Name>";
-var DatabasePassword = "<Your-Database-Password>";
+  DatabaseURL = "< Add your Cloudant database URL >";
 ```
 
 You are ready to run your app locally!
@@ -77,28 +74,19 @@ Let’s check if it’s working! Visit [http://localhost:8080](http://localhost:
 ###3.0 Deploy your app to Bluemix
 To push our app to Bluemix we can to make one smart modification to our To-Do app source code, earlier we hard coded the cloudant database credentials to the code, well now since our app will be living on Bluemix, we can take advantage of using VCAP services to not hardcode database credentials.
 
-####3.1 Modify the code to use VCAP services
-Comment out the code in which we hard code the database credentials and uncomment the VCAP service function, see below how it should look.
-
+####3.1 VCAP services
+For when pushing code to Bluemix you can remove the database URL if you wish. We are using VCAP services so we don't need to hard code database URL.
+The VCAP code where we get database details looks like this:
 ```
-  /*
-    var DatabaseLabel = "cloudantNoSQLDB";
-    var DatabaseUsername = "";
-    var DatabasePassword = "";
-
-    url = appEnv.getServiceURL(DatabaseName,
-    {
-      pathname: DatabaseLabel,
-      auth: [DatabaseUsername, DatabasePassword]
-    });
-  */
-
-
    url = appEnv.getServiceURL(DatabaseName,
    {
      pathname: "database",
      auth: ["username", "password"]
    });
+
+
+   url = url || DatabaseURL;
+
 ```
 
 

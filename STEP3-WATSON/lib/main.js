@@ -9,8 +9,8 @@ tx = require("./tx");
 todoDB = null;
 port = process.env.VCAP_APP_PORT || 8080;
 DatabaseName = "todo-couch-db";
-localDB = "http://127.0.0.1:5984";
-DatabaseURL = "";
+//localDB = "http://127.0.0.1:5984";
+
 
 
 
@@ -43,30 +43,19 @@ getCloudant = function()
 {
   var endsInSlash, length, url;
 
-
-    // ===== START ===== For when running the app locally, using Cloudant on Bluemix for your Database, while app is running locally.
-    var DatabaseLabel = "cloudantNoSQLDB";
-    var DatabaseUsername = "";
-    var DatabasePassword = "";
-
-    url = appEnv.getServiceURL(DatabaseName,
-        {
-          pathname: DatabaseLabel,
-          auth: [DatabaseUsername, DatabasePassword]
-        });
-    // ===== FINISH =====
+  //< This is only needed for when running the app locally, if app is running then it will take the URL database details and when pushed to Bluemix then it will take VCAP below>
+  //DatabaseURL = "< Add your Cloudant database URL >";
+  DatabaseURL = "https://b87439d6-6b4c-4453-9891-47c3981b1f74-bluemix:82c2907068ab6333c8399d2acf6ad1e1d926ff04ec5402d9d69535d2bd86e6d0@b87439d6-6b4c-4453-9891-47c3981b1f74-bluemix.cloudant.com";
 
 
 
-  /*
-   // ===== START ===== For when pushing the code to Bluemix - Note here we are not hard coding any database credentials. This is best practice for when pushing apps to Bluemix
+  // ===== START ===== VCAP - For when pushing the code to Bluemix - Note here we are not hard coding any database credentials. This is best practice for when pushing apps to Bluemix
      url = appEnv.getServiceURL(DatabaseName,
      {
      pathname: "database",
      auth: ["username", "password"]
      });
    // ===== FINISH =====
-  */
 
 
 
@@ -78,7 +67,7 @@ getCloudant = function()
   if (endsInSlash === -1) {
     url = url + '/';
   }
-  url = url + 'bluemix-todo';
+  url = url + 'todo-couch-db';
   return url;
 };
 
