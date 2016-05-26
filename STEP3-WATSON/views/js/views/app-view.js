@@ -112,7 +112,7 @@ var app = app || {};
 		// Generate the attributes for a new Todo item.
 		newAttributes: function () {
 			return {
-				//watsonRes: this.$input.val().trim(),
+				watsonRes: 'Client Side',
 				title: this.$input.val().trim(),
 				order: app.todos.nextOrder(),
 				completed: false

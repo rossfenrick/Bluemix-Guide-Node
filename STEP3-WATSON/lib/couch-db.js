@@ -1,5 +1,5 @@
 (function() {
-  var DB, DESIGN_DOC, DESIGN_NAME, GC_SECONDS, MAX_ITEMS, Q, allTodos_map, nano, _,
+  var DB, DESIGN_DOC, DESIGN_NAME, GC_SECONDS, MAX_ITEMS, Q, allTodos_map, nano, _, mainjs, output = {},
     __slice = [].slice;
 
   Q = require("q");
@@ -7,6 +7,7 @@
   _ = require("underscore");
 
   nano = require("nano");
+  mainjs = require("./main");
 
   Q.longStackSupport = true;
 
@@ -83,20 +84,24 @@
         limit: MAX_ITEMS
       };
       return this._dbCall("view", DESIGN_NAME, "allTodos", opts).then(function(result) {
-        return result[0].rows.map(function(item) {
+        return result[0].rows.map(function(item)
+        {
           var _ref, _ref1;
+
           return {
             id: item.id,
             title: (_ref = item.value) != null ? _ref.title : void 0,
             completed: (_ref1 = item.value) != null ? _ref1.completed : void 0,
             order: item.key
-          };
+        };
+
         });
       });
     };
 
     DB.prototype.create = function(item) {
       var err;
+
       item = this._sanitize(item);
       if (item != null) {
         delete item.id;
@@ -105,9 +110,30 @@
         err = new Error("item cannot be null");
         return Q.reject(err);
       }
+
+      var res;
       return this._dbCall("insert", item).then(function(result) {
         item.id = result[0].id;
-        return item;
+        var demo_text = item.title;
+        var temp = mainjs.keywords(output, demo_text, res);
+
+        /*
+        var temp = mainjs.display( function (test) {
+
+          return test;
+        });
+
+        //console.log('couch-db: ' + temp );
+          */
+
+
+        console.log('temp Value: ' + temp);
+
+        return{
+          item: item,
+          watsonRes: temp
+        };
+
       });
     };
 

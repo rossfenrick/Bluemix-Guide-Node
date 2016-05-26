@@ -1,5 +1,6 @@
 (function() {
   var Tx;
+  var verdata;
 
   exports.tx = function(request, response, todoDB) {
     return new Tx(request, response, todoDB);
@@ -15,6 +16,10 @@
     Tx.prototype.search = function() {
       return this.todoDB.search().then((function(_this) {
         return function(items) {
+          //verdata = _this.response.send(items.title);
+          //return datapassed(verdata);
+          //console.log(_this.response.send(items.item.value));
+
           return _this.response.send(items);
         };
       })(this)).fail((function(_this) {
@@ -26,11 +31,13 @@
       })(this)).done();
     };
 
-    Tx.prototype.create = function() {
-      return this.todoDB.create(this.request.body).then((function(_this) {
-        return function(item) {
+    Tx.prototype.create = function create(datapassed) {
+      return this.todoDB.create(this.request.body).then((function(_this)
+      {
+        return function (item) {
           return _this.response.send(item);
         };
+
       })(this)).fail((function(_this) {
         return function(err) {
           return _this.response.send(500, {
@@ -38,6 +45,7 @@
           });
         };
       })(this)).done();
+
     };
 
     Tx.prototype.read = function() {
@@ -69,6 +77,7 @@
             return null;
           }
           return _this.todoDB.update(_this.request.params.id, _this.request.body).then(function(item) {
+
             return _this.response.send(item);
           });
         };
