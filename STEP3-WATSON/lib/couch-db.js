@@ -115,7 +115,7 @@
       return this._dbCall("insert", item).then(function(result) {
         item.id = result[0].id;
         var demo_text = item.title;
-        var temp = mainjs.keywords(output, demo_text, res);
+        var temp = mainjs.keywords(demo_text, res);
 
         /*
         var temp = mainjs.display( function (test) {
@@ -131,7 +131,7 @@
 
         return{
           item: item,
-          watsonRes: temp
+          watsonRes: 'ok'
         };
 
       });

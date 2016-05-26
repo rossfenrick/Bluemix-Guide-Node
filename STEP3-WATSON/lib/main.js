@@ -104,11 +104,7 @@ Server = (function()
     
     
     var demo_text;
-
-
-    
-
-    exports.keywords = function (output, demo_text, res) {
+    exports.keywords = function (demo_text, res) {
 
       alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response) {
         output['keywords'] = { text:demo_text, response:JSON.stringify(response,null,4), results:response['keywords'] };
@@ -125,13 +121,13 @@ Server = (function()
          */
 
         res = response;
-        console.log('Res: ' + res);
+        //console.log('Res: ' + res);
         return response;
 
       });
-
       
-
+      console.log('Res here is: ' + res);
+      return res;
     };
 
 
