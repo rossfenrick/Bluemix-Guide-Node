@@ -101,8 +101,8 @@ Server = (function()
 
     app.use(express["static"]("views"));
     app.use(express.json());
-    
-    
+
+
     var demo_text;
     exports.keywords = function (demo_text, res) {
 
@@ -122,12 +122,14 @@ Server = (function()
 
         res = response;
         //console.log('Res: ' + res);
-        return response;
+        return response.write;
 
       });
-      
-      console.log('Res here is: ' + res);
-      return res;
+
+
+
+      //console.log('Res here is: ' + res);
+      //return res;
     };
 
 
@@ -169,13 +171,10 @@ Server = (function()
     app.post("/api/todos", (function(_this) {
       return function(req, res)
       {
-
           //displaying AlchemyAPI
           //demo_text = req.body.title;
-          //exports.WatsonRespondOutput = keywords(output, demo_text);
-
+          //console.log(demo_text);
           return req.tx.create();
-
       };
 
     })(this));
@@ -189,9 +188,11 @@ Server = (function()
 
     app.put("/api/todos/:id", (function(_this) {
       return function(req, res) {
+
         //Watson AlchemyAPI
-        demo_text = req.body.title;
-        keywords(output, demo_text);
+        //demo_text = req.body.title;
+        //keywords(output, demo_text);
+
         return req.tx.update();
       };
     })(this));
