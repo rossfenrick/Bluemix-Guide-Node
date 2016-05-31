@@ -155,7 +155,7 @@
 
         return{
           item: item,
-          watsonRes: temp
+          watsonRes: dummyData
         };
 
 
