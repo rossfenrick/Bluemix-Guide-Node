@@ -21,7 +21,12 @@
         "ports": "1.1.x",
         "q": "1.0.x",
         "underscore": "1.6.x",
-        "watson-developer-cloud": "^1.4.1"
+        "watson-developer-cloud": "^1.4.1",
+        "request": "~2.27.0",
+        "consolidate": "~0.9.1",
+        "mustache": "*",
+        "async": "*"
+
     },
     "devDependencies": {},
     "author": "",

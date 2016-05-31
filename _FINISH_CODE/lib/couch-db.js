@@ -1,12 +1,40 @@
 (function() {
-  var DB, DESIGN_DOC, DESIGN_NAME, GC_SECONDS, MAX_ITEMS, Q, allTodos_map, nano, _,
+  var DB, DESIGN_DOC, DESIGN_NAME, GC_SECONDS, MAX_ITEMS, Q, allTodos_map, nano, _, mainjs, output = {}, res,
     __slice = [].slice;
 
   Q = require("q");
 
   _ = require("underscore");
+  var keywordsUsed =
+      [
+        {
+      "relevance": "0.933046",
+      "sentiment": {
+        "type": "neutral"
+      },
+      "text": "todo"
+    },
+    {
+      "relevance": "0.807384",
+      "sentiment": {
+        "score": "-0.301535",
+        "type": "negative"
+      },
+      "text": "NodeJS"
+    },
+    {
+      "relevance": "0.799196",
+      "sentiment": {
+        "score": "-0.301535",
+        "type": "negative"
+      },
+      "text": "things"
+    }
+  ];
+  var dummyData = JSON.stringify(keywordsUsed,null,4);
 
   nano = require("nano");
+  mainjs = require("./main");
 
   Q.longStackSupport = true;
 
@@ -83,20 +111,24 @@
         limit: MAX_ITEMS
       };
       return this._dbCall("view", DESIGN_NAME, "allTodos", opts).then(function(result) {
-        return result[0].rows.map(function(item) {
+        return result[0].rows.map(function(item)
+        {
           var _ref, _ref1;
+
           return {
             id: item.id,
             title: (_ref = item.value) != null ? _ref.title : void 0,
             completed: (_ref1 = item.value) != null ? _ref1.completed : void 0,
             order: item.key
           };
+
         });
       });
     };
 
-    DB.prototype.create = function(item) {
+    DB.prototype.create = function(item, WaRes) {
       var err;
+
       item = this._sanitize(item);
       if (item != null) {
         delete item.id;
@@ -105,9 +137,28 @@
         err = new Error("item cannot be null");
         return Q.reject(err);
       }
+
       return this._dbCall("insert", item).then(function(result) {
         item.id = result[0].id;
-        return item;
+        var demo_text = item.title;
+        var temp = mainjs.keywords(demo_text, res);
+
+
+        /*
+        var temp = mainjs.display( function (test) {
+          return test;
+        });
+        //console.log('couch-db: ' + temp );
+        */
+
+        //console.log('Data shows part 2: ' + temp);
+
+        return{
+          item: item,
+          watsonRes: dummyData
+        };
+
+
       });
     };
 
@@ -156,6 +207,9 @@
       })(this)).then((function(_this) {
         return function() {
           item.id = id;
+
+          mainjs.keywords(item.title, res);
+
           return _this._sanitize(item);
         };
       })(this));

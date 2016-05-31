@@ -26,10 +26,14 @@
         <p><b>Guide Part 3</b> <br>To-Do's are saved to Cloudant Database + Watson Services are added to enhance the app<hr/></p>
     </footer>
 
+
+
     <script type="text/template2" id="item-template">
         <div class="view">
             <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
             <label><%- title %></label>
+
+            <label><h4>Watson Output: </h4>  <%- watsonRes %></label>
 
             <button class="destroy"></button>
         </div>
