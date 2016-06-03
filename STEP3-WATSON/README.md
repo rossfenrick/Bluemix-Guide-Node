@@ -44,68 +44,74 @@ Whether or not you’ve deployed the app, you’ll have to update the manifest.y
    ```
    
 4. Get the Alchemy API Key using this command:
+   ```
+   $ cf env <Your-Application-Name>
 ```
-$ cf env <Your-Application-Name>
-```
+
 
 5. Now with that in place, you are done from the Bluemix side, lets focus on the code. First you need to create a txt file with the Alchemy Key added inside. Use this command to create the txt file with your key.
-
-    ```
-    $ cd STEP3-WATSON  
-    $ npm install  
-    $ node alchemyapi.js <Your-Watson AlchemyAPI-Key>
-    (Note, you already have the alchemyapi.js inside your folder directory. The alchemyapi.js is used for making any of the AlchemyAPI calls. You need to have that source file for when using any of the Watson AlchemyAPI services)
-    ```
+   ```
+   $ cd STEP3-WATSON   
+   $ npm install          
+   $ node alchemyapi.js <Your-Watson AlchemyAPI-Key>  
+   (Note, you already have the alchemyapi.js inside your folder directory. The alchemyapi.js is used for making any of the AlchemyAPI calls. You need to have that source file for when using any of the Watson AlchemyAPI services)  
+```
 
 
 6. Modify the code to use the Watson Alchemy Text Extraction service
 
 Open the runWatsonCode.js file and add the code sinps below:
 **(Note: This code will be updated when NodeJS issue resolved)**
-  ```
-      //Create the AlchemyAPI object
-      var AlchemyAPI = require('./alchemyapi');
-      var alchemyapi = new AlchemyAPI();
-    
-      var output = {}, demo_text, keywordsUsed, tempOutput;
-      demo_text = 'This is a sample todo message that we are sending to Watson Alchemy Keywords';
-      keywordsUsed =[{
-              "text": "todo"
-            },{
-              "text": "NodeJS"
-            },{
-              "text": "things"
-            }];
-      exports.tempOutput = JSON.stringify(keywordsUsed,null,4);
-    
-      exports.keywords = function(demo_text, res) {
-        alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response){
-            output['keywords'] = { text:demo_text, response:JSON.stringify(response,null,4), results:response['keywords'] };
-            response = output['keywords'].response;
-            console.log('===================================================');
-            console.log('Keywords sent to Watson Alchemy: ' + demo_text);
-            console.log('Watson Output: ' + response);
-            console.log('===================================================');
-        });
-      };
-  ```
+
+   ```
+    //Create the AlchemyAPI object
+    var AlchemyAPI = require('./alchemyapi');
+    var alchemyapi = new AlchemyAPI();
+
+    var output = {}, demo_text, keywordsUsed, tempOutput;
+    demo_text = 'This is a sample todo message that we are sending to Watson Alchemy Keywords';
+    keywordsUsed =[{
+            "text": "todo"
+          },{
+            "text": "NodeJS"
+          },{
+            "text": "things"
+          }];
+    exports.tempOutput = JSON.stringify(keywordsUsed,null,4);
+
+    exports.keywords = function(demo_text, res) {
+      alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response){
+          output['keywords'] = { text:demo_text, response:JSON.stringify(response,null,4), results:response['keywords'] };
+          response = output['keywords'].response;
+          console.log('===================================================');
+          console.log('Keywords sent to Watson Alchemy: ' + demo_text);
+          console.log('Watson Output: ' + response);
+          console.log('===================================================');
+      });
+    };
+
 
  **Note:** The couch-db.js will be using the AlchemyAPI function on CRUD and return then result to the view. The Watson keyword Extraction results will be showing on Create and Update for when adding ToDo's.
 
 
 6. Push it live to Bluemix!
-    ```
-    $ cf push
-    ```
+
+   ```
+   $ cf push
+```
+
 
 ## Running locally
   To run the app locally is super simple at this stage.
 
 1. Start the application
-    ```
-    $ node server.js
-    ```
+
+   ```
+   $ node server.js
+```
+
 2. Go to [http://localhost:8080](http://localhost:8080)
+
 
 
 
