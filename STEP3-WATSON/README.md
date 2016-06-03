@@ -1,6 +1,6 @@
 # Adding a Watson service to your app
 
-Here we are going to look at how to make an API to call to a Watson service on Bluemix. We are going to use a Watson AlchemyAPI Text Extraction service to extract the keywords from the ToDo's that we type.
+Here we are going to look at how to make an API to call to a Watson service on Bluemix. We are going to use a Watson AlchemyAPI Keywords Extraction service to extract the keywords from the ToDo's and show the extracted keywords to the screen under each Todo.
 
 
 **[If you haven’t done the Step 1 Deploying a Node app to Bluemix then CLICK HERE to get you up too the speed to follow along for the Watson part.](https://github.com/Twanawebtech/Bluemix-Guide-Node/blob/master/STEP3-WATSON/cloneSteps.md)**      
