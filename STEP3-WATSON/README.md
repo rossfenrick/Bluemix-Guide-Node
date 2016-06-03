@@ -29,13 +29,15 @@ Here we are going to look at how to make an API to call to a Watson service on B
    ```
    $ cf env <Your-Application-Name>
 ```
-5. Now with that in place, you are done from the Bluemix side, lets focus on the code.  First you need to create a txt file with the Alchemy Key added inside. Use this command to create the txt file with your key.   
-   ```
-   $ cd STEP3-WATSON   
-   $ npm install          
-   $ node alchemyapi.js <Your-Watson AlchemyAPI-Key>  
-   (Note, you already have the alchemyapi.js inside your folder directory. The alchemyapi.js is used for making any of the AlchemyAPI calls. You need to have that source file for when using any of the Watson AlchemyAPI services)  
+5. Now with that in place, you are done from the Bluemix side, now lets focus on the code.  First you need to create a txt file with your Watson Alchemy Key added inside. Use this command to create the txt file with your Watson Alchemy Key.   
 ```
+$ cd STEP3-WATSON  
+$ npm install   
+$ node alchemyapi.js <Your-Watson AlchemyAPI-Key>
+```
+**Note:** There is a file called alchemyapi.js inside your folder directory in which provided by IBM for when using any of the Alchemy services to make the api call.
+
+
 6. Modify the code to use the Watson Alchemy Text Extraction service, open the runWatsonCode.js file and add the code snips below:  
 **Note:** This code will be updated when NodeJS issue resolved
 
