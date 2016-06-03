@@ -3,7 +3,7 @@
 Here we are going to look at how to make an API to call to a Watson service on Bluemix. We are going to use a Watson AlchemyAPI Text Extraction service to extract the keywords from the ToDo's that we type.
 
 
-##### If you haven’t done the Step 1 Deploying a Node app to Bluemix then **[CLICK HERE](https://github.com/Twanawebtech/Bluemix-Guide-Node/tree/master/clone)** to get you up too the speed to follow alone for the Watson part.     
+##### If you haven’t done the Step 1 Deploying a Node app to Bluemix then **[CLICK HERE](https://github.com/Twanawebtech/Bluemix-Guide-Node/blob/master/STEP3-WATSON/cloneSteps.md)** to get you up too the speed to follow alone for the Watson part.     
 
 
 
