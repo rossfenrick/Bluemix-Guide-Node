@@ -7,8 +7,7 @@ Here we are going to look at how to make an API to call to a Watson service on B
 
 
 
-##Getting Started With Watson (Alchemy Text Extraction)
-
+### Steps for creating the service on Bluemix
 1. Connect to Bluemix in the command line tool.
   ```
   $ cf login <your bluemix email and password>
@@ -29,7 +28,10 @@ Here we are going to look at how to make an API to call to a Watson service on B
    ```
    $ cf env <Your-Application-Name>
 ```
-5. Now with that in place, you are done from the Bluemix side, now lets focus on the code.  First you need to create a txt file with your Watson Alchemy Key added inside. Use this command to create the txt file with your Watson Alchemy Key.   
+-------------
+
+### Steps for using the Watson service in your code
+1. Now with that in place, you are done from the Bluemix side, now lets focus on the code.  First you need to create a txt file with your Watson Alchemy Key added inside. Use this command to create the txt file with your Watson Alchemy Key.   
 ```
 $ cd STEP3-WATSON  
 $ npm install   
@@ -37,8 +39,7 @@ $ node alchemyapi.js <Your-Watson AlchemyAPI-Key>
 ```
 **Note:** There is a file called alchemyapi.js inside your folder directory in which provided by IBM for when using any of the Alchemy services to make the api call.
 
-
-6. Modify the code to use the Watson Alchemy Text Extraction service, open the runWatsonCode.js file and add the code snips below:  
+2. Modify the code to use the Watson Alchemy Text Extraction service, open the runWatsonCode.js file and add the code snips below:  
 **Note:** This code will be updated when NodeJS issue resolved
 
    ```
@@ -69,22 +70,16 @@ $ node alchemyapi.js <Your-Watson AlchemyAPI-Key>
     };
     ```
  **Note:** The couch-db.js will be using the AlchemyAPI function on CRUD and return then result to the view. The Watson keyword Extraction results will be showing on Create and Update for when adding ToDo's.
-6. Push it live to Bluemix!
+3. Push it live to Bluemix!
    ```
    $ cf push
 ```
 
-
-## Running locally
-  To run the app locally is super simple at this stage.
-
-1. Start the application
-
+4. Running your app locally
    ```
    $ node server.js
 ```
-
-2. Go to [http://localhost:8080](http://localhost:8080)
+**Go to [http://localhost:8080](http://localhost:8080) to see your changes**
 
 
 
