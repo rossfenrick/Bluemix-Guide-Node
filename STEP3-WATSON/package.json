@@ -25,7 +25,10 @@
         "request": "~2.27.0",
         "consolidate": "~0.9.1",
         "mustache": "*",
-        "async": "*"
+        "async": "*",
+        "promise": "*",
+        "bluebird":"*"
+
 
     },
     "devDependencies": {},

@@ -1,9 +1,7 @@
 # Adding a Watson service to your app
 
-Here we are going to look at how to make an API to call to a Watson service on Bluemix.
-We are going to use a Watson Text To Speech service to convert the text to speech, the converted audio can download or just played back on the browser.
+Here we are going to look at how to make an API to call to a Watson service on Bluemix. We are going to use a Watson AlchemyAPI Text Extraction service to extract the keywords from the ToDo's that we type.
 
-Once you understand the process of making an API call, you then should be able to use the same skills to use other Watson services.
 
 ####If you haven’t done the Deploying a Node app to Bluemix Guide, follow these steps before starting:
 1. Clone the sample app:
@@ -27,95 +25,92 @@ Whether or not you’ve deployed the app, you’ll have to update the manifest.y
 3.Change the `"Name"` and `"Host"` in the `manifest.yml` file with the Name and Host that you gave to your node application
 
 
-##Getting Started with adding Watson Text To Speech!
+##Getting Started with adding Alchemy Text Extraction
 
-1. Modify the index.html
-   Uncomment the code from line **12** to **46** by removing the opening and closing comments tags
-   This code is adding a simple text area to some text and a two buttons to download converted audio.
-
-2. Connect to Bluemix in the command line tool.
+1. Connect to Bluemix in the command line tool.
   ```
   $ cf login <your bluemix email and password>
   ```
-3. Create a Watson Text To Speech Service
+3. Create a Watson Alchemny service to get your Alchemy Key
    ```
-   $ cf create-service text_to_speech standard text-to-speech-service
+   $ cf create-service alchemy_api standard AlchemyAPI-service
    ```
 4. Now let’s bind the watson to our app to better organise our services and this will display the service under your application when viewing on Bluemix dashboard (Note: you can use the same service on multiple applications)
    ```
-   $ cf bind-service <Your-Application-Name> text-to-speech-service
+   $ cf bind-service <Your-Application-Name> AlchemyAPI-service
    $ cf restage <Your-Application-Name>
    ```
-5. Modify the code to use the Text To Speech service - Open the server.js file and uncomment the below that is from line 11 to 32.
-  ```
-    /*
-        var watson = require('watson-developer-cloud');
-        var textToSpeech = watson.text_to_speech({
-            version: 'v1',
-            username: '<service-username>',
-            password: '<service-password>'
-        });
+5. Get the Alchemy API Key using this command:
+```
+$ cf env <Your-Application-Name>
+```
 
-        app.get('/api/synthesize', function(req, res, next) {
-            var transcript = textToSpeech.synthesize(req.query);
-            transcript.on('response', function(response) {
-                if (req.query.download) {
-                    response.headers['content-disposition'] = 'attachment; filename=transcript.ogg';
-                }
-            });
-            transcript.on('error', function(error) {
-                next(error);
-            });
-            transcript.pipe(res);
+6. Now with that in place, you are done from the Bluemix side, lets focus on the code. First you need to create a txt file with the Alchemy Key added inside. Use this command to create the txt file with your key.
+
+```
+$ cd STEP3-WATSON  
+$ npm install  
+$ node alchemyapi.js <Your-Watson AlchemyAPI-Key>
+(Note, you already have the alchemyapi.js inside your folder directory. The alchemyapi.js is used for making any of the AlchemyAPI calls. You need to have that source file for when using any of the Watson AlchemyAPI services)
+```
+
+
+7. Modify the code to use the Watson Alchemy Text Extraction service.
+Open the runWatsonCode.js file and add the code sinps below:
+### Note: This code will be updated when NodeJS issue resolved!
+  ```
+  //Create the AlchemyAPI object
+  var AlchemyAPI = require('./alchemyapi');
+  var alchemyapi = new AlchemyAPI();
+
+  var output = {}, demo_text, keywordsUsed, tempOutput;
+  demo_text = 'This is a sample todo message that we are sending to Watson Alchemy Keywords';
+  keywordsUsed =
+      [
+        {
+          "text": "todo"
+        },
+        {
+          "text": "NodeJS"
+        },
+        {
+          "text": "things"
+        }
+      ];
+  exports.tempOutput = JSON.stringify(keywordsUsed,null,4);
+
+
+      exports.keywords = function(demo_text, res) {
+        alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response)
+        {
+          output['keywords'] = { text:demo_text, response:JSON.stringify(response,null,4), results:response['keywords'] };
+          response = output['keywords'].response;
+          console.log('===================================================');
+          console.log('Keywords sent to Watson Alchemy: ' + demo_text);
+          console.log('Watson Output: ' + response);
+          console.log('===================================================');
         });
-   */
+      };
   ```
 
- **Note:** there is a demo.js under the `views/js/watson/JS` in which handles the events for when clicking on Download or the speak button
+ **Note:** The couch-db.js will be using the AlchemyAPI function on CRUD and return then result to the view. The Watson keyword Extraction results will be showing on Create and Update for when adding ToDo's.
+
 
 6. Push it live to Bluemix!
   ```
   $ cf push
   ```
-
+  
 
 ## Running locally
   To run the app locally is super simple at this stage.
 
-1. Copy the username and password from your `text-to-speech-service` service in Bluemix to `server.js`, you can see the credentials using:
-
-    ```
-    $ cf env <application-name>
-    ```
-    Example output:
-    ```
-    System-Provided:
-    {
-    "VCAP_SERVICES": {
-      "text_to_speech": [{
-          "credentials": {
-            "url": "<url>",
-            "password": "<password>",
-            "username": "<username>"
-          },
-        "label": "text_to_speech",
-        "name": "text-to-speech-service",
-        "plan": "free"
-     }]
-    }
-    }
-    ```
-    You need to copy `username` and `password`.
-
-2. Go to the project folder in a terminal and run:
-    ```
-    npm install
-    ```
-3. Start the application
+1. Start the application
     ```
     node server.js
     ```
-4. Go to [http://localhost:8080](http://localhost:8080)
+2. Go to [http://localhost:8080](http://localhost:8080)
+
 
 
 ## Troubleshooting
@@ -157,4 +152,3 @@ Whether or not you’ve deployed the app, you’ll have to update the manifest.y
   ```
 
   [Click here to see more commands](https://console.ng.bluemix.net/docs/cli/reference/bluemix_cli/index.html)
-
