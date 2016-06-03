@@ -5,36 +5,10 @@
   Q = require("q");
 
   _ = require("underscore");
-  var keywordsUsed =
-      [
-        {
-      "relevance": "0.933046",
-      "sentiment": {
-        "type": "neutral"
-      },
-      "text": "todo"
-    },
-    {
-      "relevance": "0.807384",
-      "sentiment": {
-        "score": "-0.301535",
-        "type": "negative"
-      },
-      "text": "NodeJS"
-    },
-    {
-      "relevance": "0.799196",
-      "sentiment": {
-        "score": "-0.301535",
-        "type": "negative"
-      },
-      "text": "things"
-    }
-  ];
-  var dummyData = JSON.stringify(keywordsUsed,null,4);
 
   nano = require("nano");
   mainjs = require("./main");
+  alchemycode = require("./../runWatsonCode");
 
   Q.longStackSupport = true;
 
@@ -140,25 +114,21 @@
 
       return this._dbCall("insert", item).then(function(result) {
         item.id = result[0].id;
-        var demo_text = item.title;
-        var temp = mainjs.keywords(demo_text, res);
-
+        var userToDoMessage = item.title;
+        //var temp = alchemycode.keywords(demo_text, res);
 
         /*
-        var temp = mainjs.display( function (test) {
-          return test;
+        alchemycode.promise().then(function(){
+          //var AlchemyKeywordsFun = alchemycode.promise(demo_text, res);
         });
-        //console.log('couch-db: ' + temp );
         */
 
-        //console.log('Data shows part 2: ' + temp);
+        alchemycode.keywords(userToDoMessage, res);
 
         return{
           item: item,
-          watsonRes: dummyData
+          watsonRes: alchemycode.tempOutput
         };
-
-
       });
     };
 

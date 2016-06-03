@@ -1,4 +1,4 @@
-var port, Q, Server, appEnv, cfEnv, couchDB, express, getCloudant, http, ports, todoDB, tx, DatabaseURL, DatabaseName, output = {};
+var port, Q, Server, appEnv, cfEnv, couchDB, express, getCloudant, http, ports, todoDB, tx, DatabaseURL, DatabaseName;
 
 http = require("http");
 Q = require("q");
@@ -11,14 +11,8 @@ todoDB = null;
 port = process.env.VCAP_APP_PORT || 8080;
 DatabaseName = "todo-couch-db";
 //localDB = "http://127.0.0.1:5984";
-
+var Promise = require('bluebird');
 var async = require("async");
-
-
-//Create the AlchemyAPI object
-var AlchemyAPI = require('./config/alchemyapi');
-var alchemyapi = new AlchemyAPI();
-
 
 
 appEnv = cfEnv.getAppEnv({
@@ -101,59 +95,6 @@ Server = (function()
 
     app.use(express["static"]("views"));
     app.use(express.json());
-
-
-    var demo_text;
-    exports.keywords = function (demo_text, res) {
-
-      alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response) {
-        output['keywords'] = { text:demo_text, response:JSON.stringify(response,null,4), results:response['keywords'] };
-        console.log('===================================================');
-        console.log('Keywords sent to Watson Alchemy: ' + demo_text);
-        console.log('Watson Output: ' + output['keywords'].response);
-        response = output['keywords'].response;
-        console.log('===================================================');
-
-        /*
-         display(function (test) {
-            //console.log('Test Fun: ' + test);
-         });
-         */
-
-        res = response;
-        //console.log('Res: ' + res);
-        return res;
-
-      });
-
-
-
-      //console.log('Res here is: ' + res);
-      //return res;
-    };
-
-
-    /*
-
-    var tempV;
-    exports.tempV = tempV;
-
-
-
-    var display = function (cb) {
-      console.log('Response Inside display Function cb: ' + cd);
-
-
-      return cb;
-    };
-
-
-    exports.display = display;
-
-    */
-
-
-
 
     app.use(function(req, res, next) {
       req.tx = tx.tx(req, res, todoDB);

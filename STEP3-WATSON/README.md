@@ -29,7 +29,7 @@ Here we are going to look at how to make an API to call to a Watson service on B
    ```
    $ cf env <Your-Application-Name>
 ```
-5. Now with that in place, you are done from the Bluemix side, lets focus on the code.  First you need to create a txt file with the Alchemy Key added inside. Use this command to create the txt file with your key.
+5. Now with that in place, you are done from the Bluemix side, lets focus on the code.  First you need to create a txt file with the Alchemy Key added inside. Use this command to create the txt file with your key.   
    ```
    $ cd STEP3-WATSON   
    $ npm install          
