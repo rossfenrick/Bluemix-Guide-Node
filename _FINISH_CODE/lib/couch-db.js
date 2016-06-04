@@ -8,8 +8,10 @@
 
   nano = require("nano");
   mainjs = require("./main");
-  alchemycode = require("./../runWatsonCode");
-
+  watson = require("watson-developer-cloud");
+  alchemyLanguage = watson.alchemy_language({
+    api_key: process.env.ALCHEMY_API_KEY
+  });
   Q.longStackSupport = true;
 
   MAX_ITEMS = 20;
@@ -112,23 +114,28 @@
         return Q.reject(err);
       }
 
-      return this._dbCall("insert", item).then(function(result) {
+      return this._dbCall("insert", item)
+      .then(function(result) {
         item.id = result[0].id;
-        var userToDoMessage = item.title;
-        //var temp = alchemycode.keywords(demo_text, res);
-
-        /*
-        alchemycode.promise().then(function(){
-          //var AlchemyKeywordsFun = alchemycode.promise(demo_text, res);
-        });
-        */
-
-        alchemycode.keywords(userToDoMessage, res);
-
-        return{
-          item: item,
-          watsonRes: alchemycode.tempOutput
+        var params = {
+          text: item.title
         };
+        var deferred = Q.defer();
+
+        // Invoke AlchemyAPI keyword extraction
+        alchemyLanguage.keywords(params, function(err, response) {
+          console.log("after returned promise");
+          var answer;
+          if (err)
+            deferred.reject(err);
+          else {
+            deferred.resolve({
+              item: item,
+              watsonRes: JSON.stringify(response.keywords, null, 2)
+            });
+          }
+        });
+        return deferred.promise;
       });
     };
 

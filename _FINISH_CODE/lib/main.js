@@ -4,8 +4,12 @@ http = require("http");
 Q = require("q");
 ports = require("ports");
 express = require("express");
-cfEnv = require("cfenv");
+cfenv = require("cfenv");
+appEnv = cfenv.getAppEnv();
+if (appEnv.isLocal)
+  require('dotenv').load();
 couchDB = require("./couch-db");
+watson = require("watson-developer-cloud");
 tx = require("./tx");
 todoDB = null;
 port = process.env.VCAP_APP_PORT || 8080;
@@ -13,11 +17,6 @@ DatabaseName = "todo-couch-db";
 //localDB = "http://127.0.0.1:5984";
 var Promise = require('bluebird');
 var async = require("async");
-
-
-appEnv = cfEnv.getAppEnv({
-
-});
 
 process.on("exit", function(status) {
   return log("process exiting with Error status  " + status);
@@ -45,7 +44,7 @@ getCloudant = function()
 
   //< This is only needed for when running the app locally, if app is running then it will take the URL database details and when pushed to Bluemix then it will take VCAP below>
   //DatabaseURL = "< Add your Cloudant database URL >";
-  DatabaseURL = "https://b87439d6-6b4c-4453-9891-47c3981b1f74-bluemix:82c2907068ab6333c8399d2acf6ad1e1d926ff04ec5402d9d69535d2bd86e6d0@b87439d6-6b4c-4453-9891-47c3981b1f74-bluemix.cloudant.com";
+  DatabaseURL = process.env.CLOUDANT_URL;
 
 
 
@@ -71,6 +70,11 @@ getCloudant = function()
   return url;
 };
 
+// Set up AlchemyAPI handler using WDC module
+var alchemyLanguage = watson.alchemy_language({
+  api_key: process.env.ALCHEMY_API_KEY
+});
+
 
 Server = (function()
 {
@@ -93,7 +97,7 @@ Server = (function()
     app = express();
 
 
-    app.use(express["static"]("views"));
+    app.use(express["static"]("public"));
     app.use(express.json());
 
     app.use(function(req, res, next) {
@@ -143,6 +147,23 @@ Server = (function()
       };
     })(this));
 
+
+    app.get("/api/keywords", (function(_this) {
+      return function(req, res){
+        var params = {
+          text: 'IBM Watson won the Jeopardy television show hosted by Alex Trebek'
+        };
+
+        alchemyLanguage.keywords(params, function (err, response) {
+          var answer;
+          if (err)
+            answer = err;
+          else
+            answer = JSON.stringify(response.keywords, null, 2);
+          res.send(answer);
+        });
+      };
+    })(this));
 
     app.listen(port, appEnv.bind, (function(_this) {
 

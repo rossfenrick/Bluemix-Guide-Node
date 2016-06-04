@@ -6,7 +6,7 @@
     var options;
     var shortOptions;
     var envOptions = {};
-    app.use(express.static(__dirname + '/views'));
+    app.use(express.static(__dirname + '/public'));
 
 
 
