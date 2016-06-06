@@ -73,8 +73,11 @@ getCloudant = function()
 // Set up AlchemyAPI handler using WDC module
 var alchemyLanguage = watson.alchemy_language({
   api_key: process.env.ALCHEMY_API_KEY
+<<<<<<< HEAD
   //api_key: 'Add your AlchemyAPI key here if urnning locally'
 
+=======
+>>>>>>> origin/master
 });
 
 

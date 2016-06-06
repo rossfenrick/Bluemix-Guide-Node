@@ -11,10 +11,14 @@
   watson = require("watson-developer-cloud");
   alchemyLanguage = watson.alchemy_language({
     api_key: process.env.ALCHEMY_API_KEY
+<<<<<<< HEAD
     //api_key: 'Add your AlchemyAPI key here if urnning locally'
 
   });
 
+=======
+  });
+>>>>>>> origin/master
   Q.longStackSupport = true;
 
   MAX_ITEMS = 20;
@@ -127,6 +131,7 @@
 
         // Invoke AlchemyAPI keyword extraction
         alchemyLanguage.keywords(params, function(err, response) {
+<<<<<<< HEAD
           console.log("Inside the AlchemyAPI - returned promise");
           var answer;
           if (err){
@@ -138,6 +143,16 @@
             deferred.resolve({
               item: item,
               watsonRes: AlcRes
+=======
+          console.log("after returned promise");
+          var answer;
+          if (err)
+            deferred.reject(err);
+          else {
+            deferred.resolve({
+              item: item,
+              watsonRes: JSON.stringify(response.keywords, null, 2)
+>>>>>>> origin/master
             });
           }
         });
