@@ -17,8 +17,6 @@ keywordsUsed =
       }
     ];
 exports.tempOutput = JSON.stringify(keywordsUsed,null,4);
-
-
     exports.keywords = function(demo_text, res) {
       alchemyapi.keywords('text', demo_text, { 'sentiment':1 }, function(response)
       {

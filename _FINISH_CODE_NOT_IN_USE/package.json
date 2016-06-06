@@ -27,9 +27,11 @@
         "mustache": "*",
         "async": "*",
         "promise": "*",
-        "bluebird":"*",
-        "dotenv": "2.0.0"
+        "bluebird":"*"
+
+
     },
+    "devDependencies": {},
     "author": "",
     "contributors": [
         {

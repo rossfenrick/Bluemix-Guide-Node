@@ -17,12 +17,6 @@ $ npm install
 
 Run the app
 $ node server.js
-
-Add your database URL inside the main.js
-//DatabaseURL = "< Add your Cloudant database URL >";
-
-Add your AlchemyAPI key into the main.js and couch-db.js files where you see below:  
-//api_key: 'Add your AlchemyAPI key here if urnning locally'
 ```
 You should now see your app by viewing this URL - http://localhost:8080
 

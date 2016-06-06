@@ -1,2 +1,6 @@
 node_modules
-app_key.txt
+.env
+.gitignore
+.git
+*.log
+*.DS_Store

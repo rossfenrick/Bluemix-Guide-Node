@@ -8,12 +8,7 @@
 
   nano = require("nano");
   mainjs = require("./main");
-  watson = require("watson-developer-cloud");
-  alchemyLanguage = watson.alchemy_language({
-    api_key: process.env.ALCHEMY_API_KEY
-    //api_key: 'Add your AlchemyAPI key here if urnning locally'
-
-  });
+  alchemycode = require("./../runWatsonCode");
 
   Q.longStackSupport = true;
 
@@ -117,31 +112,23 @@
         return Q.reject(err);
       }
 
-      return this._dbCall("insert", item)
-      .then(function(result) {
+      return this._dbCall("insert", item).then(function(result) {
         item.id = result[0].id;
-        var params = {
-          text: item.title
-        };
-        var deferred = Q.defer();
+        var userToDoMessage = item.title;
+        //var temp = alchemycode.keywords(demo_text, res);
 
-        // Invoke AlchemyAPI keyword extraction
-        alchemyLanguage.keywords(params, function(err, response) {
-          console.log("Inside the AlchemyAPI - returned promise");
-          var answer;
-          if (err){
-            deferred.reject(err);
-            console.log("Erros while returning result" + JSON.stringify(err, null, 2));
-          }
-          else {
-            var AlcRes = JSON.stringify(response.keywords, null, 2);
-            deferred.resolve({
-              item: item,
-              watsonRes: AlcRes
-            });
-          }
+        /*
+        alchemycode.promise().then(function(){
+          //var AlchemyKeywordsFun = alchemycode.promise(demo_text, res);
         });
-        return deferred.promise;
+        */
+
+        alchemycode.keywords(userToDoMessage, res);
+
+        return{
+          item: item,
+          watsonRes: alchemycode.tempOutput
+        };
       });
     };
 
