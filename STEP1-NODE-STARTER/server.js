@@ -2,7 +2,7 @@
     var _ = require("underscore");
     var express = require("express");
     var app = express();
-    var port = process.env.VCAP_APP_PORT || 8080;
+    var port = 8080;
     var options;
     var shortOptions;
     var envOptions = {};
